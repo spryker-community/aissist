@@ -7,7 +7,7 @@ use Spryker\Yves\Kernel\AbstractFactory;
 
 class AissistantFactory extends AbstractFactory
 {
-    public function createAissistantClient(): AissistantClient
+    public function getAissistantClient(): AissistantClient
     {
         return $this->getProvidedDependency(AissistantDependencyProvider::AISSISTANT_CLIENT);
     }
