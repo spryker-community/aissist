@@ -7,7 +7,7 @@
 
 namespace Aissistant\Client\Aissistant;
 
-use Aissistant\Client\Aissistant\Model\OpenAiWrapper;
+use Aissistant\Client\Aissistant\OpenAiWrapper\OpenAiWrapper;
 use OpenAI;
 use OpenAI\Client as OpenAIClient;
 use Spryker\Client\Kernel\AbstractFactory;

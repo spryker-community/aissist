@@ -1,5 +1,5 @@
 <?php
-namespace Aissistant\Client\Aissistant\Model;
+namespace Aissistant\Client\Aissistant\OpenAiWrapper;
 use OpenAI\Client as OpenAIClient;
 class OpenAiWrapper
 {

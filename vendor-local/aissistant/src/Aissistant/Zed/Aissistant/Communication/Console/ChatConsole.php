@@ -15,7 +15,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * @method \Pyz\Zed\Aissistant\Communication\AissistantCommunicationFactory getFactory()
+ * @method \Aissistant\Zed\Aissistant\Communication\AissistantCommunicationFactory getFactory()
  */
 class ChatConsole extends Console
 {
