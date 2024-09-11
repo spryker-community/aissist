@@ -4,33 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "92a9e251f05ad9bfaa73d165b0d21051",
+    "content-hash": "22a9cd5fe7ede67f37acd8e1d4eed197",
     "packages": [
-        {
-            "name": "aissistant/aissistant",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "vendor-local/aissistant",
-                "reference": "a04381af1ceaea46b29558d0b397f2dc3eab5333"
-            },
-            "require": {
-                "openai-php/client": "^v0.10.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Aissistant\\": "src/Aissistant/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "description": "aissistant initial module",
-            "transport-options": {
-                "relative": true
-            }
-        },
         {
             "name": "async-aws/core",
             "version": "1.21.0",
@@ -8001,6 +7976,31 @@
                 "source": "https://github.com/spryker-shop/agent-widget/tree/master"
             },
             "time": "2020-07-24T04:43:12+00:00"
+        },
+        {
+            "name": "spryker-shop/aissistant",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "vendor-local/aissistant",
+                "reference": "f298cf569485cac05cfaf1e3c06e81a625e35728"
+            },
+            "require": {
+                "openai-php/client": "^v0.10.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Aissistant\\": "src/Aissistant/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "aissistant",
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "spryker-shop/asset-widget",

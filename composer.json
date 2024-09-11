@@ -223,7 +223,7 @@
         "spryker/warehouses-backend-api": "^1.0.0",
         "spryker/wishlists-rest-api": "^1.6.2",
         "symfony/http-kernel": "^6.4.6",
-        "aissistant/aissistant": "*"
+        "spryker-shop/aissistant": "*"
     },
     "require-dev": {
         "codeception/codeception": "^5.0.12",

@@ -1,6 +1,6 @@
 {
-    "name": "aissistant/aissistant",
-    "description": "aissistant initial module",
+    "name": "spryker-shop/aissistant",
+    "description": "aissistant",
     "type": "library",
     "license": "MIT",
     "minimum-stability": "dev",
