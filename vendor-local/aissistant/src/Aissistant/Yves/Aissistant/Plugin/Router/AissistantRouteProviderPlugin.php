@@ -1,13 +1,13 @@
 <?php
 
-namespace Pyz\Yves\Assistant\Plugin\Router;
+namespace Aissistant\Yves\Aissistant\Plugin\Router;
 
 use Spryker\Yves\Router\Plugin\RouteProvider\AbstractRouteProviderPlugin;
 use Spryker\Yves\Router\Route\RouteCollection;
 
-class AssistantRouteProviderPlugin extends AbstractRouteProviderPlugin
+class AissistantRouteProviderPlugin extends AbstractRouteProviderPlugin
 {
-    public const ROUTE_NAME_ASSISTANT = 'assistant';
+    public const ROUTE_NAME_ASSISTANT = 'aissistant';
 
     public function addRoutes( RouteCollection $routeCollection ): RouteCollection
     {
@@ -21,7 +21,7 @@ class AssistantRouteProviderPlugin extends AbstractRouteProviderPlugin
      */
     protected function addAssistantRoute( RouteCollection $routeCollection ): RouteCollection
     {
-        $route = $this->buildRoute('/assistant', 'Assistant', 'Assistant', 'indexAction');
+        $route = $this->buildRoute('/aissistant', 'Aissistant', 'Aissistant', 'indexAction');
         $routeCollection->add(static::ROUTE_NAME_ASSISTANT, $route);
 
         return $routeCollection;

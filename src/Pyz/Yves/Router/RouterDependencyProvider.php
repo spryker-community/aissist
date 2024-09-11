@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\Router;
 
-use Pyz\Yves\Assistant\Plugin\Router\AssistantRouteProviderPlugin;
+use Aissistant\Yves\Aissistant\Plugin\Router\AissistantRouteProviderPlugin;
 use Pyz\Yves\ExampleProductSalePage\Plugin\Router\ExampleProductSaleRouteProviderPlugin;
 use Spryker\Yves\HealthCheck\Plugin\Router\HealthCheckRouteProviderPlugin;
 use Spryker\Yves\Router\Plugin\RouteManipulator\LanguageDefaultPostAddRouteManipulatorPlugin;
@@ -125,7 +125,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new ConfigurableBundleNoteWidgetAsyncRouteProviderPlugin(),
             new ConfigurableBundleWidgetAsyncRouteProviderPlugin(),
             new OrderCustomReferenceWidgetAsyncRouteProviderPlugin(),
-            new AssistantRouteProviderPlugin()
+            new AissistantRouteProviderPlugin()
         ];
     }
 

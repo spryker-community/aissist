@@ -1,10 +1,11 @@
 <?php
 
-namespace Pyz\Yves\Assistant;
+namespace Aissistant\Yves\Aissistant;
 
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
-class AssistantDependencyProvider  extends AbstractBundleDependencyProvider
+
+class AissistantDependencyProvider  extends AbstractBundleDependencyProvider
 {
     public const AISSISTANT_CLIENT = 'AISSISTANT_CLIENT';
 
