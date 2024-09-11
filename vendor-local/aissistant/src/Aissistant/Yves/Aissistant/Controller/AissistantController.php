@@ -29,6 +29,7 @@ class AissistantController  extends AbstractController
         $response = $this->getFactory()->getAissistantClient()->ask($requestTransfer);
 
         if ($response->getResponse()) {
+            $session->set(static::THREAD_ID, $response->getThreadId());
             $textResponse = $response->getResponse();
         } else {
             $textResponse = 'Empty response';
