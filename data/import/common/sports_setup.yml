@@ -1,0 +1,18 @@
+# Example of a B2C demo shop 'API CI' minimal data import.
+version: 0
+
+actions:
+  - data_entity: category
+    source: data/import/common/common/category_sports.csv
+  - data_entity: category-store
+    source: data/import/common/DE/category_store_sport.csv
+  - data_entity: product-abstract
+    source: data/import/common/DE/product_abstract_sport.csv
+  - data_entity: product-concrete
+    source: data/import/common/DE/product_concrete_sport.csv
+  - data_entity: product-price
+    source: data/import/common/DE/product_price_sport.csv
+  - data_entity: product-stock
+    source: data/import/common/DE/product_stock_sport.csv
+  - data_entity: product-abstract-store
+    source: data/import/common/DE/product_abstract_store_sport.csv
