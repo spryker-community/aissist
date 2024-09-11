@@ -253,6 +253,8 @@ margin-bottom: 0.75rem; /* mb-3 */
         const chatPopup = document.getElementById('chat-popup');
         chatPopup.classList.toggle('hidden');
         if (!chatPopup.classList.contains('hidden')) {
+
+            reply('hi! How may I assist you today? Can I provide any recommendations?');
             document.getElementById('chat-input').focus();
         }
     }
