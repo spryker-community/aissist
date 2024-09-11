@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Console;
 
+use Aissistant\Zed\Aissistant\Communication\Console\ChatConsole;
 use Pyz\Zed\DataImport\DataImportConfig;
 use Pyz\Zed\Development\Communication\Console\AcceptanceCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\ApiCodeTestConsole;
@@ -360,6 +361,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DeleteExpiredPushNotificationSubscriptionConsole(),
             new SendPushNotificationConsole(),
             new OrderMatrixConsole(),
+
+            new ChatConsole()
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();

@@ -1,0 +1,16 @@
+{
+    "name": "spryker-shop/aissistant",
+    "description": "aissistant",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "openai-php/client": "^v0.10.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Aissistant\\": "src/Aissistant/"
+        }
+    }
+}
