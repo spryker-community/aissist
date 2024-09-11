@@ -2,22 +2,31 @@
 
 namespace Aissistant\Yves\Aissistant\Controller;
 
+use Generated\Shared\Transfer\AissistantChatRequestTransfer;
 use Spryker\Yves\Kernel\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @method \Aissistant\Client\Aissistant\AissistantFactory getFactory()
+ * @method \Aissistant\Yves\Aissistant\AissistantFactory getFactory()
  */
 class AissistantController  extends AbstractController
 {
-    protected const ARG_PROMPT = 'prompt';
+    protected const MESSAGE = 'message';
 
     public function indexAction(Request $request)
     {
-        $response = $this->getFactory()->createAissistantClient()->ask("How are you?");
+        $threadId = null;
+        $message = $request->query->get(static::MESSAGE) ?? '';
 
-        return $this->jsonResponse($response);
+        $requestTransfer = new AissistantChatRequestTransfer();
+        $requestTransfer->setThreadId($threadId);
+        $requestTransfer->setMessage($message);
 
+        if (!empty($message)) {
+            $response = $this->getFactory()->getAissistantClient()->ask($requestTransfer);
+            return $this->jsonResponse($response);
+        }
+        return $this->jsonResponse("repeat your question");
     }
 
 }
