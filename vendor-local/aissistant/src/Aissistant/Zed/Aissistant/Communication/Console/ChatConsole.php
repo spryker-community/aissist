@@ -8,6 +8,7 @@
 
 namespace Aissistant\Zed\Aissistant\Communication\Console;
 
+use Generated\Shared\Transfer\AissistantChatRequestTransfer;
 use Spryker\Zed\Kernel\Communication\Console\Console;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -56,8 +57,16 @@ class ChatConsole extends Console
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $response = $this->getFactory()->getAissistantClient()->ask($input->getArgument(static::ARG_PROMPT));
-        $output->writeln($response);
+        $threadId = null;
+        $message = $input->getArgument(static::ARG_PROMPT);
+
+        $requestTransfer = new AissistantChatRequestTransfer();
+        $requestTransfer->setThreadId($threadId);
+        $requestTransfer->setMessage($message);
+
+        $response = $this->getFactory()->getAissistantClient()->ask($requestTransfer);
+
+        $output->writeln($response->getResponse());
 
         return Command::SUCCESS;
     }

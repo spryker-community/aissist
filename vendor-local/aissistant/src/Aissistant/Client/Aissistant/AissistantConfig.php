@@ -14,4 +14,12 @@ class AissistantConfig extends AbstractBundleConfig
     {
         return $this->get(AissistantConstants::OPENAI_API_KEY);
     }
+
+    /**
+     * @return string
+     */
+    public function getAssistantId(): string
+    {
+        return $this->get(AissistantConstants::ASSISTANT_ID);
+    }
 }

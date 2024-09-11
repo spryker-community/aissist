@@ -7,3 +7,4 @@
 use Aissistant\Shared\Aissistant\AissistantConstants;
 
 $config[AissistantConstants::OPENAI_API_KEY] = 'YOUR_OPENAI_API_KEY_HERE';
+$config[AissistantConstants::ASSISTANT_ID] = 'ASSISTANT_ID_HERE';

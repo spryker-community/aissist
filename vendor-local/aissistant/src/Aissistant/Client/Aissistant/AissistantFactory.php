@@ -29,6 +29,7 @@ class AissistantFactory extends AbstractFactory
     public function createOpenAIClient(): OpenAIClient
     {
         return OpenAI::factory()
+            ->withHttpHeader('OpenAI-Beta', 'assistants=v2')
             ->withApiKey($this->getConfig()->getOpenaiApiKey())
             ->make();
     }
@@ -49,7 +50,7 @@ class AissistantFactory extends AbstractFactory
     {
         return new OpenAiWrapper(
             $this->getOpenAIClient(),
-
+            $this->getConfig(),
         );
     }
 }
