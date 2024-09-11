@@ -12,21 +12,28 @@ use Symfony\Component\HttpFoundation\Request;
 class AissistantController  extends AbstractController
 {
     protected const MESSAGE = 'message';
+    protected const THREAD_ID = 'aisistantThreadId';
 
     public function indexAction(Request $request)
     {
-        $threadId = null;
         $message = $request->query->get(static::MESSAGE) ?? '';
+        $session = $this->getFactory()->getSessionClient();
+        $threadId = $session->get(static::THREAD_ID);
+        if (empty($message)) {
+            return $this->jsonResponse("Empty response");
+        }
 
         $requestTransfer = new AissistantChatRequestTransfer();
         $requestTransfer->setThreadId($threadId);
         $requestTransfer->setMessage($message);
+        $response = $this->getFactory()->getAissistantClient()->ask($requestTransfer);
 
-        if (!empty($message)) {
-            $response = $this->getFactory()->getAissistantClient()->ask($requestTransfer);
-            return $this->jsonResponse($response);
+        if ($response->getResponse()) {
+            $textResponse = $response->getResponse();
+        } else {
+            $textResponse = 'Empty response';
         }
-        return $this->jsonResponse("repeat your question");
+        return $this->jsonResponse($textResponse);
     }
 
 }
