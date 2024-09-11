@@ -16,25 +16,28 @@ class AissistantController  extends AbstractController
 
     public function indexAction(Request $request)
     {
-        $message = $request->query->get(static::MESSAGE) ?? '';
-        $session = $this->getFactory()->getSessionClient();
-        $threadId = $session->get(static::THREAD_ID);
-        if (empty($message)) {
+
+        $message = $request->query->get(static::MESSAGE);
+        if ($message === null){
             return $this->jsonResponse("Empty response");
         }
 
-        $requestTransfer = new AissistantChatRequestTransfer();
-        $requestTransfer->setThreadId($threadId);
-        $requestTransfer->setMessage($message);
-        $response = $this->getFactory()->getAissistantClient()->ask($requestTransfer);
+        $sessionClient = $this->getFactory()->getSessionClient();
+        $threadId = $sessionClient->get(static::THREAD_ID);
 
-        if ($response->getResponse()) {
-            $session->set(static::THREAD_ID, $response->getThreadId());
-            $textResponse = $response->getResponse();
-        } else {
-            $textResponse = 'Empty response';
+        $aissistantChatRequestTransfer = new AissistantChatRequestTransfer();
+        $aissistantChatRequestTransfer->setThreadId($threadId);
+        $aissistantChatRequestTransfer->setMessage($message);
+
+        $aissistantChatResponseTransfer = $this->getFactory()->getAissistantClient()->ask($aissistantChatRequestTransfer);
+
+        if ($aissistantChatResponseTransfer->getResponse() === null) {
+            return $this->jsonResponse('I am sorry, I could not understand your request');
         }
-        return $this->jsonResponse($textResponse);
+
+        $sessionClient->set(static::THREAD_ID, $aissistantChatResponseTransfer->getThreadId());
+
+        return $this->jsonResponse($aissistantChatResponseTransfer->getResponse());
     }
 
 }
