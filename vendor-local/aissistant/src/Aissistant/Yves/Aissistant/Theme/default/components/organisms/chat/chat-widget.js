@@ -266,10 +266,28 @@ margin-bottom: 0.75rem; /* mb-3 */
 
         chatInput.value = '';
 
+        const request = new Request("/aissistant?message="+message, {
+            method: "GET",
+        });
+
+        fetch(request)
+            .then(async (response) => {
+                if (response.status === 200) {
+                    reply(await response.json());
+                } else {
+                    reply("Something went wrong on API server!");
+                }
+            })
+            .then((response) => {
+                console.debug(response);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
         // Reply to the user
-        setTimeout(function() {
-            reply('Hello! This is a sample reply.');
-        }, 1000);
+        // setTimeout(function() {
+        //     reply('Hello! This is a sample reply.');
+        // }, 1000);
     }
 
     function reply(message) {
