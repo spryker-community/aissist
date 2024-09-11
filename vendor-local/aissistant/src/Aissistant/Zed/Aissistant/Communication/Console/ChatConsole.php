@@ -35,6 +35,10 @@ class ChatConsole extends Console
      */
     protected const ARG_PROMPT = 'prompt';
 
+    /**
+     * @var string
+     */
+    protected const ARG_THREAD_ID = 'threadId';
 
     /**
      * @return void
@@ -45,6 +49,7 @@ class ChatConsole extends Console
         $this->setDescription(self::DESCRIPTION);
 
         $this->addArgument(static::ARG_PROMPT, InputArgument::REQUIRED, self::DESCRIPTION);
+        $this->addArgument(static::ARG_THREAD_ID, InputArgument::OPTIONAL, self::DESCRIPTION);
 
         parent::configure();
     }
@@ -59,6 +64,7 @@ class ChatConsole extends Console
     {
         $threadId = null;
         $message = $input->getArgument(static::ARG_PROMPT);
+        $threadId = $input->getArgument(static::ARG_THREAD_ID);
 
         $requestTransfer = new AissistantChatRequestTransfer();
         $requestTransfer->setThreadId($threadId);
@@ -66,7 +72,14 @@ class ChatConsole extends Console
 
         $response = $this->getFactory()->getAissistantClient()->ask($requestTransfer);
 
-        $output->writeln($response->getResponse());
+        if ($response->getResponse()) {
+            $textResponse = $response->getResponse();
+        } else {
+            $textResponse = 'Empty!!';
+        }
+
+        $output->writeln($textResponse);
+        $output->writeln('ThreadID:' . $response->getThreadId());
 
         return Command::SUCCESS;
     }

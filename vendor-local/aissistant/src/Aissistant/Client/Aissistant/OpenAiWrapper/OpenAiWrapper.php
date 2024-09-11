@@ -26,6 +26,14 @@ class OpenAiWrapper
         if ($requestTransfer->getThreadId()) {
             $response->setThreadId($requestTransfer->getThreadId());
 
+            $messageCreated = $this->openAIClient->threads()->messages()->create(
+                $requestTransfer->getThreadId(),
+                [
+                    'role' => 'user',
+                    'content' => $requestTransfer->getMessage()
+                ]
+            );
+
             $this->openAIClient->threads()->runs()->create(
                 threadId: $requestTransfer->getThreadId(),
                 parameters: [
