@@ -135,6 +135,14 @@
       cursor: pointer;
     }
 
+    .reply-message a {
+      color: #5a67d8; /* Tailwind text-indigo-600 */
+    }
+
+    #spinner {
+        display: none;
+    }
+
     #chat-input-container a {
       color: #5a67d8; /* Tailwind text-indigo-600 */
     }
@@ -189,7 +197,7 @@ margin-bottom: 0.75rem; /* mb-3 */
 
   <div id="chat-popup" class="hidden">
     <div id="chat-header">
-      <h3>Chat Widget by GPT4</h3>
+      <h3>Aissistant</h3>
       <button id="close-popup">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -245,6 +253,8 @@ margin-bottom: 0.75rem; /* mb-3 */
         const chatPopup = document.getElementById('chat-popup');
         chatPopup.classList.toggle('hidden');
         if (!chatPopup.classList.contains('hidden')) {
+
+            reply('hi! How may I assist you today? Can I provide any recommendations?');
             document.getElementById('chat-input').focus();
         }
     }
@@ -269,6 +279,8 @@ margin-bottom: 0.75rem; /* mb-3 */
         const request = new Request("/aissistant?message="+message, {
             method: "GET",
         });
+
+
 
         fetch(request)
             .then(async (response) => {
