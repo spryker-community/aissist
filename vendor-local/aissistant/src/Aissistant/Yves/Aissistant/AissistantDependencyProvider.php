@@ -13,13 +13,13 @@ class AissistantDependencyProvider  extends AbstractBundleDependencyProvider
     public function provideDependencies(Container $container): Container
     {
         $container = parent::provideDependencies($container);
-        $this->getAissistantClient($container);
-        $this->getSessionClient($container);
+        $this->addAissistantClient($container);
+        $this->addSessionClient($container);
 
         return $container;
     }
 
-    protected function getAissistantClient( Container $container): Container
+    protected function addAissistantClient( Container $container): Container
     {
         $container->set(static::AISSISTANT_CLIENT, function (Container $container) {
             return $container->getLocator()->aissistant()->client();
@@ -28,7 +28,7 @@ class AissistantDependencyProvider  extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    protected function getSessionClient( Container $container): Container
+    protected function addSessionClient( Container $container): Container
     {
         $container->set(static::SESSION_CLIENT, function (Container $container) {
             return $container->getLocator()->session()->client();
